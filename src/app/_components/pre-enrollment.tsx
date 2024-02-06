@@ -60,6 +60,11 @@ export function PreEnrollment() {
 
   const onSubmit = async (values: z.infer<typeof formScheme>) => {
     setCompleted(true);
+    await saveLead({
+      name: values.name,
+      email: values.email,
+      phoneNumber: values.phoneNumber,
+    });
   };
 
   return (
