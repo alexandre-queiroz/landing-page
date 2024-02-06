@@ -29,6 +29,8 @@ import { useState } from "react";
 
 import { saveLead } from "../action";
 
+import { track } from "@vercel/analytics";
+
 const formScheme = z.object({
   name: z
     .string()
@@ -65,6 +67,7 @@ export function PreEnrollment() {
       email: values.email,
       phoneNumber: values.phoneNumber,
     });
+    track("pre-enrollment", { location: "save" });
   };
 
   return (
@@ -73,6 +76,9 @@ export function PreEnrollment() {
         <Button
           variant="default"
           size="lg"
+          onClick={() => {
+            track("pre-enrollment", { location: "investment" });
+          }}
           className="text-md bg-primary hover:bg-primary text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
         >
           Lista de espera

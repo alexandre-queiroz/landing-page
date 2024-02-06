@@ -1,5 +1,7 @@
+"use client";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { track } from "@vercel/analytics";
 
 export function IntroSection() {
   return (
@@ -41,6 +43,9 @@ export function IntroSection() {
           <a
             href="#investiment"
             className="bg-primary py-2 px-4 text-md text-white rounded shadow-lg"
+            onClick={() => {
+              track("enrollment", { location: "intro" });
+            }}
           >
             Quero fazer parte!
           </a>
@@ -53,6 +58,9 @@ export function IntroSection() {
                 className: "rounded bg-transparent",
               })
             )}
+            onClick={() => {
+              track("features");
+            }}
           >
             Saiba mais
           </a>
